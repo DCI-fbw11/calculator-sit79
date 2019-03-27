@@ -1,7 +1,14 @@
 class Calc {
-  constructor(num) {
-    this.num = num;
+  constructor() {
+    this.num = 0;
   }
+
+  input(num) {
+    this.throwOnBadDatatype(num);
+    this.num = num;
+    return this;
+  }
+
   add(num) {
     this.throwOnBadDatatype(num);
     this.num = this.num + num;
@@ -39,9 +46,10 @@ class Calc {
 
 module.exports = Calc;
 
-const result = new Calc(1)
-  .add(3)
+const result = new Calc()
+  .input(10)
   .subtract(3)
-  .multiply(2)
-  .divide(3);
+  .subtract(2)
+  .multiply(34)
+  .divide(12);
 console.log(result.num);
