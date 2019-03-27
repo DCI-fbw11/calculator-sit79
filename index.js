@@ -1,22 +1,47 @@
 class Calc {
   constructor(num) {
-    this.num = num
+    this.num = num;
   }
-  add(numToAdd) {
-    this.throwOnBadDatatype(numToAdd)
-    this.num = this.num + numToAdd
-    return this
+  add(num) {
+    this.throwOnBadDatatype(num);
+    this.num = this.num + num;
+    return this;
   }
 
-  throwOnBadDatatype(numToAdd) {
-    if (typeof numToAdd === "string") {
-      throw new Error("No strings allowed")
-    }
+  plus(num) {
+    return this.add(num);
+  }
 
-    if (typeof numToAdd === "object") {
-      throw new Error("No object allowed")
+  subtract(num) {
+    this.throwOnBadDatatype(num);
+    this.num = this.num - num;
+    return this;
+  }
+
+  multiply(num) {
+    this.throwOnBadDatatype(num);
+    this.num = this.num * num;
+    return this;
+  }
+
+  divide(num) {
+    this.throwOnBadDatatype(num);
+    this.num = this.num / num;
+    return this;
+  }
+
+  throwOnBadDatatype(num) {
+    if (typeof num !== "number") {
+      throw new Error("input must be a number");
     }
   }
 }
 
-module.exports = Calc
+module.exports = Calc;
+
+const result = new Calc(1)
+  .add(3)
+  .subtract(3)
+  .multiply(2)
+  .divide(3);
+console.log(result.num);
